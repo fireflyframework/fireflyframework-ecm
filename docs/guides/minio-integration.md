@@ -31,7 +31,7 @@ This guide demonstrates how to integrate MinIO as a self-hosted, S3-compatible d
 Before starting, ensure you have:
 
 - **Docker** or **Kubernetes** for MinIO deployment
-- **Java 17+** installed and configured
+- **Java 21+** installed and configured
 - **Spring Boot 3.0+** knowledge
 - **Maven 3.6+** or **Gradle 7.0+**
 - **Firefly ECM Library** understanding

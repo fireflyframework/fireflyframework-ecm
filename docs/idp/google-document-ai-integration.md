@@ -8,7 +8,7 @@ This guide provides step-by-step instructions for integrating Google Document AI
 
 - Google Cloud Platform (GCP) account with billing enabled
 - Google Cloud CLI (gcloud) installed and configured
-- Java 17 or higher
+- Java 21 or higher
 - Spring Boot 3.x application
 
 ## Step 1: Google Cloud Setup

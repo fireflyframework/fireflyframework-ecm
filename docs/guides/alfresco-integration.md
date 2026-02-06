@@ -18,7 +18,7 @@ This guide shows how to integrate Alfresco Content Services as an enterprise ECM
 ## Prerequisites
 
 - Alfresco Content Services 7.0+
-- Java 17+
+- Java 21+
 - Spring Boot 3.0+
 - Firefly ECM Library
 - Network access to Alfresco server

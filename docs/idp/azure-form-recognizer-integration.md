@@ -8,7 +8,7 @@ This guide provides step-by-step instructions for integrating Azure Form Recogni
 
 - Azure subscription with Form Recognizer service
 - Azure CLI installed and configured
-- Java 17 or higher
+- Java 21 or higher
 - Spring Boot 3.x application
 
 ## Step 1: Azure Setup

@@ -20,7 +20,7 @@ This comprehensive guide demonstrates how to integrate DocuSign for digital sign
 Before starting, ensure you have:
 
 - **DocuSign Developer Account** with API access
-- **Java 17+** installed and configured
+- **Java 21+** installed and configured
 - **Spring Boot 3.0+** knowledge
 - **Maven 3.6+** or **Gradle 7.0+**
 - **Firefly ECM Library** understanding

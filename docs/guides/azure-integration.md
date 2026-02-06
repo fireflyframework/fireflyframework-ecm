@@ -33,7 +33,7 @@ This guide demonstrates how to integrate Azure Blob Storage as a document storag
 Before starting, ensure you have:
 
 - **Azure Account** with Blob Storage access
-- **Java 17+** installed and configured
+- **Java 21+** installed and configured
 - **Spring Boot 3.0+** knowledge
 - **Maven 3.6+** or **Gradle 7.0+**
 - **Firefly ECM Library** understanding

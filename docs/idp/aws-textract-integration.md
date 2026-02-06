@@ -8,7 +8,7 @@ This guide provides step-by-step instructions for integrating Amazon Textract wi
 
 - AWS Account with Textract service access
 - AWS CLI configured or IAM credentials available
-- Java 17 or higher
+- Java 21 or higher
 - Spring Boot 3.x application
 
 ## Step 1: AWS Setup
