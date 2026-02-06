@@ -4,7 +4,7 @@ This guide shows how to integrate the Amazon S3 adapter for document storage wit
 
 ## Overview
 
-The S3 adapter is provided as a **separate library** (`lib-ecm-adapter-s3`) that implements the ECM port interfaces for Amazon S3 storage. This guide covers:
+The S3 adapter is provided as a **separate library** (`fireflyframework-ecm-adapter-s3`) that implements the ECM port interfaces for Amazon S3 storage. This guide covers:
 
 - Adding the S3 adapter dependency
 - Configuring AWS credentials and S3 bucket
@@ -30,7 +30,7 @@ Before starting, ensure you have:
 - **Java 21+** installed and configured
 - **Spring Boot 3.0+** application
 - **Maven 3.6+** or **Gradle 7.0+**
-- **Firefly ECM Library** (`lib-ecm`) already added to your project
+- **Firefly ECM Library** (`fireflyframework-ecm`) already added to your project
 - **Basic AWS CLI** knowledge (optional but recommended)
 
 ## 2. Add S3 Adapter Dependency
@@ -43,15 +43,15 @@ Add the S3 adapter library to your `pom.xml`:
 <dependencies>
     <!-- Firefly ECM Core Library (Port Interfaces) -->
     <dependency>
-        <groupId>com.firefly</groupId>
-        <artifactId>lib-ecm</artifactId>
+        <groupId>org.fireflyframework</groupId>
+        <artifactId>fireflyframework-ecm</artifactId>
         <version>1.0.0-SNAPSHOT</version>
     </dependency>
 
     <!-- S3 Adapter Implementation -->
     <dependency>
-        <groupId>com.firefly</groupId>
-        <artifactId>lib-ecm-adapter-s3</artifactId>
+        <groupId>org.fireflyframework</groupId>
+        <artifactId>fireflyframework-ecm-adapter-s3</artifactId>
         <version>1.0.0-SNAPSHOT</version>
     </dependency>
 
@@ -70,10 +70,10 @@ For Gradle projects, add to your `build.gradle`:
 ```gradle
 dependencies {
     // Firefly ECM Core Library (Port Interfaces)
-    implementation 'com.firefly:lib-ecm:1.0.0-SNAPSHOT'
+    implementation 'org.fireflyframework:fireflyframework-ecm:1.0.0-SNAPSHOT'
 
     // S3 Adapter Implementation
-    implementation 'com.firefly:lib-ecm-adapter-s3:1.0.0-SNAPSHOT'
+    implementation 'org.fireflyframework:fireflyframework-ecm-adapter-s3:1.0.0-SNAPSHOT'
 
     // Your other dependencies
     implementation 'org.springframework.boot:spring-boot-starter-webflux'
@@ -360,7 +360,7 @@ firefly:
 logging:
   level:
     # ECM library logging
-    com.firefly.core.ecm: INFO
+    org.fireflyframework.ecm: INFO
     com.example.ecm: DEBUG
 
     # AWS SDK logging (reduce noise)
@@ -431,7 +431,7 @@ firefly:
 
 logging:
   level:
-    com.firefly.core.ecm: DEBUG
+    org.fireflyframework.ecm: DEBUG
     com.example.ecm: DEBUG
     software.amazon.awssdk: DEBUG
 
@@ -458,7 +458,7 @@ firefly:
 
 logging:
   level:
-    com.firefly.core.ecm: INFO
+    org.fireflyframework.ecm: INFO
     software.amazon.awssdk: WARN
     root: WARN
 
@@ -477,7 +477,7 @@ Create a configuration validator to ensure proper setup:
 // src/main/java/com/example/ecm/config/EcmConfigurationValidator.java
 package com.example.ecm.config;
 
-import com.firefly.core.ecm.config.EcmProperties;
+import org.fireflyframework.ecm.config.EcmProperties;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
@@ -562,7 +562,7 @@ First, create the S3 configuration:
 // src/main/java/com/example/ecm/config/S3Configuration.java
 package com.example.ecm.config;
 
-import com.firefly.core.ecm.config.EcmProperties;
+import org.fireflyframework.ecm.config.EcmProperties;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
@@ -687,12 +687,12 @@ Create the main document adapter implementing DocumentPort:
 // src/main/java/com/example/ecm/adapter/S3DocumentAdapter.java
 package com.example.ecm.adapter;
 
-import com.firefly.core.ecm.adapter.EcmAdapter;
-import com.firefly.core.ecm.adapter.AdapterFeature;
-import com.firefly.core.ecm.config.EcmProperties;
-import com.firefly.core.ecm.domain.model.document.Document;
-import com.firefly.core.ecm.domain.enums.document.DocumentStatus;
-import com.firefly.core.ecm.port.document.DocumentPort;
+import org.fireflyframework.ecm.adapter.EcmAdapter;
+import org.fireflyframework.ecm.adapter.AdapterFeature;
+import org.fireflyframework.ecm.config.EcmProperties;
+import org.fireflyframework.ecm.domain.model.document.Document;
+import org.fireflyframework.ecm.domain.enums.document.DocumentStatus;
+import org.fireflyframework.ecm.port.document.DocumentPort;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
@@ -1306,10 +1306,10 @@ Create the content adapter for handling binary content:
 // src/main/java/com/example/ecm/adapter/S3DocumentContentAdapter.java
 package com.example.ecm.adapter;
 
-import com.firefly.core.ecm.adapter.EcmAdapter;
-import com.firefly.core.ecm.adapter.AdapterFeature;
-import com.firefly.core.ecm.config.EcmProperties;
-import com.firefly.core.ecm.port.document.DocumentContentPort;
+import org.fireflyframework.ecm.adapter.EcmAdapter;
+import org.fireflyframework.ecm.adapter.AdapterFeature;
+import org.fireflyframework.ecm.config.EcmProperties;
+import org.fireflyframework.ecm.port.document.DocumentContentPort;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
@@ -1578,10 +1578,10 @@ Create comprehensive service classes that use the S3 adapters:
 // src/main/java/com/example/ecm/service/DocumentService.java
 package com.example.ecm.service;
 
-import com.firefly.core.ecm.domain.model.document.Document;
-import com.firefly.core.ecm.domain.enums.document.DocumentStatus;
-import com.firefly.core.ecm.port.document.DocumentPort;
-import com.firefly.core.ecm.port.document.DocumentContentPort;
+import org.fireflyframework.ecm.domain.model.document.Document;
+import org.fireflyframework.ecm.domain.enums.document.DocumentStatus;
+import org.fireflyframework.ecm.port.document.DocumentPort;
+import org.fireflyframework.ecm.port.document.DocumentContentPort;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.buffer.DataBuffer;
@@ -1741,7 +1741,7 @@ Create REST controllers for the ECM functionality:
 package com.example.ecm.controller;
 
 import com.example.ecm.service.DocumentService;
-import com.firefly.core.ecm.domain.model.document.Document;
+import org.fireflyframework.ecm.domain.model.document.Document;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.buffer.DataBuffer;
@@ -1869,8 +1869,8 @@ public class DocumentController {
 package com.example.ecm;
 
 import com.example.ecm.service.DocumentService;
-import com.firefly.core.ecm.domain.model.document.Document;
-import com.firefly.core.ecm.domain.enums.document.DocumentStatus;
+import org.fireflyframework.ecm.domain.model.document.Document;
+import org.fireflyframework.ecm.domain.enums.document.DocumentStatus;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;

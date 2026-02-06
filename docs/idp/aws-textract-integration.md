@@ -305,7 +305,7 @@ Add logging configuration to monitor Textract operations:
 ```yaml
 logging:
   level:
-    com.firefly.core.ecm.adapter.aws: DEBUG
+    org.fireflyframework.ecm.adapter.aws: DEBUG
     software.amazon.awssdk.services.textract: DEBUG
 ```
 

@@ -5,7 +5,7 @@ This document provides a comprehensive reference for all configuration propertie
 ## Important Note
 
 This reference covers configuration for:
-- **Core Library** (lib-ecm): Port interfaces and infrastructure
+- **Core Library** (fireflyframework-ecm): Port interfaces and infrastructure
 - **Adapter Libraries** (separate repositories): Concrete implementations
 
 **To use adapter configurations, you must first add the adapter library as a dependency.**
@@ -20,7 +20,7 @@ This reference covers configuration for:
 - [Environment Variables](#environment-variables)
 - [Configuration Examples](#configuration-examples)
 
-## Core Configuration (lib-ecm)
+## Core Configuration (fireflyframework-ecm)
 
 ### Basic ECM Configuration
 
@@ -51,12 +51,12 @@ The following configurations require their respective adapter libraries to be ad
 
 ## S3 Adapter Configuration
 
-**Requires dependency**: `lib-ecm-adapter-s3`
+**Requires dependency**: `fireflyframework-ecm-adapter-s3`
 
 ```xml
 <dependency>
-    <groupId>com.firefly</groupId>
-    <artifactId>lib-ecm-adapter-s3</artifactId>
+    <groupId>org.fireflyframework</groupId>
+    <artifactId>fireflyframework-ecm-adapter-s3</artifactId>
     <version>1.0.0-SNAPSHOT</version>
 </dependency>
 ```
@@ -101,12 +101,12 @@ Supported storage classes:
 
 ## Azure Blob Storage Adapter Configuration
 
-**Requires dependency**: `lib-ecm-adapter-azure-blob`
+**Requires dependency**: `fireflyframework-ecm-adapter-azure-blob`
 
 ```xml
 <dependency>
-    <groupId>com.firefly</groupId>
-    <artifactId>lib-ecm-adapter-azure-blob</artifactId>
+    <groupId>org.fireflyframework</groupId>
+    <artifactId>fireflyframework-ecm-adapter-azure-blob</artifactId>
     <version>1.0.0-SNAPSHOT</version>
 </dependency>
 ```
@@ -128,12 +128,12 @@ Supported storage classes:
 
 ## DocuSign Adapter Configuration
 
-**Requires dependency**: `lib-ecm-adapter-docusign`
+**Requires dependency**: `fireflyframework-ecm-adapter-docusign`
 
 ```xml
 <dependency>
-    <groupId>com.firefly</groupId>
-    <artifactId>lib-ecm-adapter-docusign</artifactId>
+    <groupId>org.fireflyframework</groupId>
+    <artifactId>fireflyframework-ecm-adapter-docusign</artifactId>
     <version>1.0.0-SNAPSHOT</version>
 </dependency>
 ```
@@ -157,12 +157,12 @@ Supported storage classes:
 
 ## Adobe Sign Adapter Configuration
 
-**Requires dependency**: `lib-ecm-adapter-adobe-sign`
+**Requires dependency**: `fireflyframework-ecm-adapter-adobe-sign`
 
 ```xml
 <dependency>
-    <groupId>com.firefly</groupId>
-    <artifactId>lib-ecm-adapter-adobe-sign</artifactId>
+    <groupId>org.fireflyframework</groupId>
+    <artifactId>fireflyframework-ecm-adapter-adobe-sign</artifactId>
     <version>1.0.0-SNAPSHOT</version>
 </dependency>
 ```
@@ -238,7 +238,7 @@ firefly:
 
 logging:
   level:
-    com.firefly.ecm: DEBUG
+    org.fireflyframework.ecm: DEBUG
 ```
 
 ### Production Environment
@@ -271,8 +271,8 @@ firefly:
 
 logging:
   level:
-    com.firefly.ecm: INFO
-    com.firefly.ecm.adapter: WARN
+    org.fireflyframework.ecm: INFO
+    org.fireflyframework.ecm.adapter: WARN
 ```
 
 ### Multi-Adapter Configuration

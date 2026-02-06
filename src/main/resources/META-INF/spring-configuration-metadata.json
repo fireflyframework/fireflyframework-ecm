@@ -2,27 +2,27 @@
   "groups": [
     {
       "name": "firefly.ecm",
-      "type": "com.firefly.core.ecm.config.EcmProperties",
+      "type": "org.fireflyframework.ecm.config.EcmProperties",
       "description": "Configuration properties for Firefly ECM system."
     },
     {
       "name": "firefly.ecm.connection",
-      "type": "com.firefly.core.ecm.config.EcmProperties$Connection",
+      "type": "org.fireflyframework.ecm.config.EcmProperties$Connection",
       "description": "Connection settings for ECM adapters."
     },
     {
       "name": "firefly.ecm.features",
-      "type": "com.firefly.core.ecm.config.EcmProperties$Features",
+      "type": "org.fireflyframework.ecm.config.EcmProperties$Features",
       "description": "Feature flags for ECM functionality."
     },
     {
       "name": "firefly.ecm.defaults",
-      "type": "com.firefly.core.ecm.config.EcmProperties$Defaults",
+      "type": "org.fireflyframework.ecm.config.EcmProperties$Defaults",
       "description": "Default settings for ECM system."
     },
     {
       "name": "firefly.ecm.performance",
-      "type": "com.firefly.core.ecm.config.EcmProperties$Performance",
+      "type": "org.fireflyframework.ecm.config.EcmProperties$Performance",
       "description": "Performance settings for ECM system."
     }
   ],

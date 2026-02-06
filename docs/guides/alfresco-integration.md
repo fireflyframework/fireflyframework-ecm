@@ -31,8 +31,8 @@ Add the required dependencies to your `pom.xml`:
 <dependencies>
     <!-- Firefly ECM Library -->
     <dependency>
-        <groupId>com.firefly</groupId>
-        <artifactId>lib-ecm</artifactId>
+        <groupId>org.fireflyframework</groupId>
+        <artifactId>fireflyframework-ecm</artifactId>
         <version>1.0.0</version>
     </dependency>
     
@@ -130,7 +130,7 @@ firefly:
 # Alfresco-specific logging
 logging:
   level:
-    com.firefly.core.ecm: INFO
+    org.fireflyframework.ecm: INFO
     org.alfresco: DEBUG
     org.apache.chemistry.opencmis: WARN
 ```

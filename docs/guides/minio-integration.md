@@ -228,8 +228,8 @@ Since MinIO is S3-compatible, we can reuse the AWS S3 SDK:
 <dependencies>
     <!-- Firefly ECM Library -->
     <dependency>
-        <groupId>com.firefly</groupId>
-        <artifactId>lib-ecm</artifactId>
+        <groupId>org.fireflyframework</groupId>
+        <artifactId>fireflyframework-ecm</artifactId>
         <version>1.0.0</version>
     </dependency>
     
@@ -323,7 +323,7 @@ firefly:
 # Logging configuration
 logging:
   level:
-    com.firefly.core.ecm: INFO
+    org.fireflyframework.ecm: INFO
     com.example.ecm: DEBUG
     software.amazon.awssdk: INFO
     software.amazon.awssdk.request: WARN
@@ -383,7 +383,7 @@ Create the MinIO configuration:
 // src/main/java/com/example/ecm/config/MinIOConfiguration.java
 package com.example.ecm.config;
 
-import com.firefly.core.ecm.config.EcmProperties;
+import org.fireflyframework.ecm.config.EcmProperties;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;

@@ -235,9 +235,9 @@ The Firefly ECM Library follows semantic versioning:
 
 For API questions and support:
 
-- **Documentation**: [Firefly ECM Wiki](https://github.com/firefly-oss/lib-ecm/wiki)
-- **Issues**: [GitHub Issues](https://github.com/firefly-oss/lib-ecm/issues)
-- **Discussions**: [GitHub Discussions](https://github.com/firefly-oss/lib-ecm/discussions)
+- **Documentation**: [Firefly ECM Wiki](https://github.org/fireflyframework-oss/fireflyframework-ecm/wiki)
+- **Issues**: [GitHub Issues](https://github.org/fireflyframework-oss/fireflyframework-ecm/issues)
+- **Discussions**: [GitHub Discussions](https://github.org/fireflyframework-oss/fireflyframework-ecm/discussions)
 
 ---
 

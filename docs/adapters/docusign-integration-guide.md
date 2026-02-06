@@ -58,15 +58,15 @@ Add the DocuSign adapter dependency to your `pom.xml`:
 <dependencies>
     <!-- Core ECM Library -->
     <dependency>
-        <groupId>com.firefly</groupId>
-        <artifactId>lib-ecm-core</artifactId>
+        <groupId>org.fireflyframework</groupId>
+        <artifactId>fireflyframework-ecm-core</artifactId>
         <version>1.0.0-SNAPSHOT</version>
     </dependency>
 
     <!-- DocuSign Adapter -->
     <dependency>
-        <groupId>com.firefly</groupId>
-        <artifactId>lib-ecm-adapter-docusign</artifactId>
+        <groupId>org.fireflyframework</groupId>
+        <artifactId>fireflyframework-ecm-adapter-docusign</artifactId>
         <version>1.0.0-SNAPSHOT</version>
     </dependency>
 </dependencies>
@@ -350,7 +350,7 @@ public class DocuSignTestConfig {
 ```yaml
 logging:
   level:
-    com.firefly.ecm.adapter.docusign: INFO
+    org.fireflyframework.ecm.adapter.docusign: INFO
     com.docusign.esign: WARN
 ```
 
@@ -414,7 +414,7 @@ Enable debug logging for troubleshooting:
 ```yaml
 logging:
   level:
-    com.firefly.ecm.adapter.docusign: DEBUG
+    org.fireflyframework.ecm.adapter.docusign: DEBUG
     com.docusign.esign: DEBUG
 ```
 

@@ -376,7 +376,7 @@ public class CustomModelService {
 ```yaml
 logging:
   level:
-    com.firefly.core.ecm.adapter.azure: DEBUG
+    org.fireflyframework.ecm.adapter.azure: DEBUG
     com.azure.ai.formrecognizer: DEBUG
 ```
 

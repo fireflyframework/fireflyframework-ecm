@@ -60,8 +60,8 @@ Add the required dependencies to your `pom.xml`:
     <dependencies>
         <!-- Firefly ECM Library -->
         <dependency>
-            <groupId>com.firefly</groupId>
-            <artifactId>lib-ecm</artifactId>
+            <groupId>org.fireflyframework</groupId>
+            <artifactId>fireflyframework-ecm</artifactId>
             <version>1.0.0</version>
         </dependency>
 
@@ -581,7 +581,7 @@ firefly:
 logging:
   level:
     # ECM library logging
-    com.firefly.core.ecm: INFO
+    org.fireflyframework.ecm: INFO
     com.example.ecm: DEBUG
 
     # DocuSign SDK logging
@@ -666,7 +666,7 @@ firefly:
 # Enable debug logging for development
 logging:
   level:
-    com.firefly.core.ecm: DEBUG
+    org.fireflyframework.ecm: DEBUG
     com.example.ecm: DEBUG
     com.docusign: DEBUG
     com.docusign.esign.client: DEBUG
@@ -708,7 +708,7 @@ firefly:
 # Production logging (less verbose)
 logging:
   level:
-    com.firefly.core.ecm: INFO
+    org.fireflyframework.ecm: INFO
     com.docusign: WARN
     root: WARN
 
@@ -846,7 +846,7 @@ First, create the DocuSign configuration and client setup:
 // src/main/java/com/example/ecm/config/DocuSignConfiguration.java
 package com.example.ecm.config;
 
-import com.firefly.core.ecm.config.EcmProperties;
+import org.fireflyframework.ecm.config.EcmProperties;
 import com.docusign.esign.client.ApiClient;
 import com.docusign.esign.client.auth.OAuth;
 import lombok.extern.slf4j.Slf4j;
@@ -993,18 +993,18 @@ Create the main envelope adapter implementing SignatureEnvelopePort:
 // src/main/java/com/example/ecm/adapter/DocuSignSignatureEnvelopeAdapter.java
 package com.example.ecm.adapter;
 
-import com.firefly.core.ecm.adapter.EcmAdapter;
-import com.firefly.core.ecm.adapter.AdapterFeature;
-import com.firefly.core.ecm.config.EcmProperties;
-import com.firefly.core.ecm.domain.model.esignature.SignatureEnvelope;
-import com.firefly.core.ecm.domain.model.esignature.SignatureRequest;
-import com.firefly.core.ecm.domain.model.esignature.SignatureField;
-import com.firefly.core.ecm.domain.enums.esignature.EnvelopeStatus;
-import com.firefly.core.ecm.domain.enums.esignature.SignatureRequestStatus;
-import com.firefly.core.ecm.domain.enums.esignature.FieldType;
-import com.firefly.core.ecm.domain.enums.esignature.SignatureProvider;
-import com.firefly.core.ecm.port.esignature.SignatureEnvelopePort;
-import com.firefly.core.ecm.port.document.DocumentContentPort;
+import org.fireflyframework.ecm.adapter.EcmAdapter;
+import org.fireflyframework.ecm.adapter.AdapterFeature;
+import org.fireflyframework.ecm.config.EcmProperties;
+import org.fireflyframework.ecm.domain.model.esignature.SignatureEnvelope;
+import org.fireflyframework.ecm.domain.model.esignature.SignatureRequest;
+import org.fireflyframework.ecm.domain.model.esignature.SignatureField;
+import org.fireflyframework.ecm.domain.enums.esignature.EnvelopeStatus;
+import org.fireflyframework.ecm.domain.enums.esignature.SignatureRequestStatus;
+import org.fireflyframework.ecm.domain.enums.esignature.FieldType;
+import org.fireflyframework.ecm.domain.enums.esignature.SignatureProvider;
+import org.fireflyframework.ecm.port.esignature.SignatureEnvelopePort;
+import org.fireflyframework.ecm.port.document.DocumentContentPort;
 
 // DocuSign SDK imports
 import com.docusign.esign.api.EnvelopesApi;
@@ -1851,15 +1851,15 @@ Create comprehensive service classes that use the DocuSign adapters:
 // src/main/java/com/example/ecm/service/SignatureService.java
 package com.example.ecm.service;
 
-import com.firefly.core.ecm.domain.model.esignature.SignatureEnvelope;
-import com.firefly.core.ecm.domain.model.esignature.SignatureRequest;
-import com.firefly.core.ecm.domain.model.esignature.SignatureField;
-import com.firefly.core.ecm.domain.enums.esignature.EnvelopeStatus;
-import com.firefly.core.ecm.domain.enums.esignature.SignatureRequestStatus;
-import com.firefly.core.ecm.domain.enums.esignature.FieldType;
-import com.firefly.core.ecm.port.esignature.SignatureEnvelopePort;
-import com.firefly.core.ecm.port.esignature.SignatureRequestPort;
-import com.firefly.core.ecm.port.document.DocumentPort;
+import org.fireflyframework.ecm.domain.model.esignature.SignatureEnvelope;
+import org.fireflyframework.ecm.domain.model.esignature.SignatureRequest;
+import org.fireflyframework.ecm.domain.model.esignature.SignatureField;
+import org.fireflyframework.ecm.domain.enums.esignature.EnvelopeStatus;
+import org.fireflyframework.ecm.domain.enums.esignature.SignatureRequestStatus;
+import org.fireflyframework.ecm.domain.enums.esignature.FieldType;
+import org.fireflyframework.ecm.port.esignature.SignatureEnvelopePort;
+import org.fireflyframework.ecm.port.esignature.SignatureRequestPort;
+import org.fireflyframework.ecm.port.document.DocumentPort;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -2203,13 +2203,13 @@ public class SignatureService {
     /**
      * Validates that all documents exist and are accessible.
      */
-    private Mono<List<com.firefly.core.ecm.domain.model.document.Document>> validateDocuments(List<UUID> documentIds) {
+    private Mono<List<org.fireflyframework.ecm.domain.model.document.Document>> validateDocuments(List<UUID> documentIds) {
         if (documentIds == null || documentIds.isEmpty()) {
             return Mono.error(new IllegalArgumentException("At least one document is required"));
         }
 
         // Check that all documents exist
-        List<Mono<com.firefly.core.ecm.domain.model.document.Document>> documentChecks = documentIds.stream()
+        List<Mono<org.fireflyframework.ecm.domain.model.document.Document>> documentChecks = documentIds.stream()
             .map(documentPort::getDocument)
             .collect(Collectors.toList());
 
@@ -2221,8 +2221,8 @@ public class SignatureService {
                 }
 
                 // Validate document status and accessibility
-                for (com.firefly.core.ecm.domain.model.document.Document doc : documents) {
-                    if (doc.getStatus() != com.firefly.core.ecm.domain.enums.document.DocumentStatus.ACTIVE) {
+                for (org.fireflyframework.ecm.domain.model.document.Document doc : documents) {
+                    if (doc.getStatus() != org.fireflyframework.ecm.domain.enums.document.DocumentStatus.ACTIVE) {
                         throw new IllegalArgumentException("Document is not active: " + doc.getId());
                     }
                 }

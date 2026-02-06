@@ -49,8 +49,8 @@ Add the required dependencies to your `pom.xml`:
 <dependencies>
     <!-- Firefly ECM Library -->
     <dependency>
-        <groupId>com.firefly</groupId>
-        <artifactId>lib-ecm</artifactId>
+        <groupId>org.fireflyframework</groupId>
+        <artifactId>fireflyframework-ecm</artifactId>
         <version>1.0.0</version>
     </dependency>
     
@@ -220,7 +220,7 @@ firefly:
 # Logging configuration
 logging:
   level:
-    com.firefly.core.ecm: INFO
+    org.fireflyframework.ecm: INFO
     com.example.ecm: DEBUG
     com.azure.storage: INFO
     com.azure.core: WARN
@@ -265,7 +265,7 @@ package com.example.ecm.config;
 import com.azure.identity.DefaultAzureCredentialBuilder;
 import com.azure.storage.blob.BlobServiceClient;
 import com.azure.storage.blob.BlobServiceClientBuilder;
-import com.firefly.core.ecm.config.EcmProperties;
+import org.fireflyframework.ecm.config.EcmProperties;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;

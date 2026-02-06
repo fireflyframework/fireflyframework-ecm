@@ -36,8 +36,8 @@ Add the Adobe Sign adapter dependency to your `pom.xml`:
 
 ```xml
 <dependency>
-    <groupId>com.firefly.ecm</groupId>
-    <artifactId>lib-ecm-adapter-adobe-sign</artifactId>
+    <groupId>org.fireflyframework.ecm</groupId>
+    <artifactId>fireflyframework-ecm-adapter-adobe-sign</artifactId>
     <version>${firefly.ecm.version}</version>
 </dependency>
 ```
@@ -203,7 +203,7 @@ Enable debug logging for troubleshooting:
 ```yaml
 logging:
   level:
-    com.firefly.ecm.adapter.adobesign: DEBUG
+    org.fireflyframework.ecm.adapter.adobesign: DEBUG
 ```
 
 ## API Reference

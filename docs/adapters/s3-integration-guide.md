@@ -33,15 +33,15 @@ Add the S3 adapter dependency to your `pom.xml`:
 <dependencies>
     <!-- Core ECM Library -->
     <dependency>
-        <groupId>com.firefly</groupId>
-        <artifactId>lib-ecm-core</artifactId>
+        <groupId>org.fireflyframework</groupId>
+        <artifactId>fireflyframework-ecm-core</artifactId>
         <version>1.0.0-SNAPSHOT</version>
     </dependency>
     
     <!-- S3 Adapter -->
     <dependency>
-        <groupId>com.firefly</groupId>
-        <artifactId>lib-ecm-adapter-s3</artifactId>
+        <groupId>org.fireflyframework</groupId>
+        <artifactId>fireflyframework-ecm-adapter-s3</artifactId>
         <version>1.0.0-SNAPSHOT</version>
     </dependency>
 </dependencies>
@@ -305,7 +305,7 @@ Enable debug logging for troubleshooting:
 ```yaml
 logging:
   level:
-    com.firefly.ecm.adapter.s3: DEBUG
+    org.fireflyframework.ecm.adapter.s3: DEBUG
     software.amazon.awssdk.services.s3: DEBUG
 ```
 

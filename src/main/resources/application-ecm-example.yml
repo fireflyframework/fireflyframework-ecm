@@ -90,9 +90,9 @@ firefly:
 # Logging configuration for ECM
 logging:
   level:
-    com.firefly.core.ecm: INFO
-    com.firefly.core.ecm.adapter: DEBUG  # Enable for adapter debugging
-    com.firefly.core.ecm.service: INFO
+    org.fireflyframework.ecm: INFO
+    org.fireflyframework.ecm.adapter: DEBUG  # Enable for adapter debugging
+    org.fireflyframework.ecm.service: INFO
 
 # Spring configuration
 spring:

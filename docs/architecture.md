@@ -58,7 +58,7 @@ This architecture enables:
 │                    (Separate Repositories)                      │
 │                                                                 │
 │  ┌──────────────────┐  ┌──────────────────┐  ┌──────────────┐  │
-│  │ lib-ecm-adapter- │  │ lib-ecm-adapter- │  │ lib-ecm-     │  │
+│  │ fireflyframework-ecm-adapter- │  │ fireflyframework-ecm-adapter- │  │ fireflyframework-ecm-     │  │
 │  │       s3         │  │   docusign       │  │ adapter-     │  │
 │  │                  │  │                  │  │ azure-blob   │  │
 │  │ Implements:      │  │ Implements:      │  │              │  │
@@ -67,7 +67,7 @@ This architecture enables:
 │  └──────────────────┘  └──────────────────┘  └──────────────┘  │
 │                                                                 │
 │  ┌──────────────────┐  ┌──────────────────┐  ┌──────────────┐  │
-│  │ lib-ecm-adapter- │  │ lib-ecm-adapter- │  │ lib-ecm-     │  │
+│  │ fireflyframework-ecm-adapter- │  │ fireflyframework-ecm-adapter- │  │ fireflyframework-ecm-     │  │
 │  │   adobe-sign     │  │   alfresco       │  │ adapter-     │  │
 │  │                  │  │                  │  │ aws-textract │  │
 │  │ (Planned)        │  │ (Planned)        │  │ (Planned)    │  │
@@ -81,7 +81,7 @@ This architecture enables:
 
 The Firefly ECM implementation separates hexagonal architecture across multiple libraries:
 
-#### 1. Port Interface Library (lib-ecm)
+#### 1. Port Interface Library (fireflyframework-ecm)
 
 This library contains:
 
@@ -99,7 +99,7 @@ This library contains:
 
 Each adapter library:
 
-- **Depends on lib-ecm** for port interfaces and domain models
+- **Depends on fireflyframework-ecm** for port interfaces and domain models
 - **Implements specific port interfaces** for a particular technology
 - **Includes provider SDK dependencies** (e.g., AWS SDK, DocuSign SDK)
 - **Registers itself** via Spring Boot auto-configuration
@@ -110,11 +110,11 @@ Each adapter library:
 - Multiple adapters can coexist (e.g., S3 + DocuSign)
 - Adapter-specific configuration properties
 
-## Core Components in lib-ecm
+## Core Components in fireflyframework-ecm
 
 ### Domain Models
 
-Located in `com.firefly.core.ecm.domain.model`, these represent the core business entities:
+Located in `org.fireflyframework.ecm.domain.model`, these represent the core business entities:
 
 #### Document Management
 - **Document**: Core document entity with metadata
@@ -133,7 +133,7 @@ Located in `com.firefly.core.ecm.domain.model`, these represent the core busines
 
 ### Ports (Interfaces)
 
-Located in `com.firefly.core.ecm.port`, these define the business interfaces:
+Located in `org.fireflyframework.ecm.port`, these define the business interfaces:
 
 #### Document Ports
 - **DocumentPort**: Document CRUD operations
@@ -166,7 +166,7 @@ Located in `com.firefly.core.ecm.port`, these define the business interfaces:
 
 ### Adapter Infrastructure
 
-Located in `com.firefly.core.ecm.adapter`, this provides the framework for adapter discovery and selection:
+Located in `org.fireflyframework.ecm.adapter`, this provides the framework for adapter discovery and selection:
 
 - **AdapterRegistry**: Maintains registry of available adapters
 - **AdapterSelector**: Selects appropriate adapter based on configuration
@@ -176,32 +176,32 @@ Located in `com.firefly.core.ecm.adapter`, this provides the framework for adapt
 
 ## Adapter Implementation Libraries (Separate Repositories)
 
-Adapter implementations are provided in separate libraries that depend on lib-ecm:
+Adapter implementations are provided in separate libraries that depend on fireflyframework-ecm:
 
 ### Document Storage Adapters
 
 | Adapter | Library | Status | Implements |
 |---------|---------|--------|------------|
-| **Amazon S3** | `lib-ecm-adapter-s3` | ✅ Available | DocumentPort, DocumentContentPort |
-| **Azure Blob** | `lib-ecm-adapter-azure-blob` | ✅ Available | DocumentPort, DocumentContentPort |
-| **MinIO** | `lib-ecm-adapter-minio` | 🔜 Planned | DocumentPort, DocumentContentPort |
-| **Alfresco** | `lib-ecm-adapter-alfresco` | 🔜 Planned | DocumentPort, FolderPort, PermissionPort |
+| **Amazon S3** | `fireflyframework-ecm-adapter-s3` | ✅ Available | DocumentPort, DocumentContentPort |
+| **Azure Blob** | `fireflyframework-ecm-adapter-azure-blob` | ✅ Available | DocumentPort, DocumentContentPort |
+| **MinIO** | `fireflyframework-ecm-adapter-minio` | 🔜 Planned | DocumentPort, DocumentContentPort |
+| **Alfresco** | `fireflyframework-ecm-adapter-alfresco` | 🔜 Planned | DocumentPort, FolderPort, PermissionPort |
 
 ### eSignature Adapters
 
 | Adapter | Library | Status | Implements |
 |---------|---------|--------|------------|
-| **DocuSign** | `lib-ecm-adapter-docusign` | ✅ Available | SignatureEnvelopePort, SignatureRequestPort |
-| **Adobe Sign** | `lib-ecm-adapter-adobe-sign` | ✅ Available | SignatureEnvelopePort, SignatureValidationPort |
-| **Logalty** | `lib-ecm-adapter-logalty` | 🔜 Planned | SignatureEnvelopePort (eIDAS-compliant) |
+| **DocuSign** | `fireflyframework-ecm-adapter-docusign` | ✅ Available | SignatureEnvelopePort, SignatureRequestPort |
+| **Adobe Sign** | `fireflyframework-ecm-adapter-adobe-sign` | ✅ Available | SignatureEnvelopePort, SignatureValidationPort |
+| **Logalty** | `fireflyframework-ecm-adapter-logalty` | 🔜 Planned | SignatureEnvelopePort (eIDAS-compliant) |
 
 ### IDP Adapters
 
 | Adapter | Library | Status | Implements |
 |---------|---------|--------|------------|
-| **AWS Textract** | `lib-ecm-adapter-aws-textract` | 🔜 Planned | DocumentExtractionPort, DataExtractionPort |
-| **Azure Form Recognizer** | `lib-ecm-adapter-azure-form-recognizer` | 🔜 Planned | DocumentExtractionPort, DataExtractionPort |
-| **Google Document AI** | `lib-ecm-adapter-google-document-ai` | 🔜 Planned | DocumentExtractionPort, DataExtractionPort |
+| **AWS Textract** | `fireflyframework-ecm-adapter-aws-textract` | 🔜 Planned | DocumentExtractionPort, DataExtractionPort |
+| **Azure Form Recognizer** | `fireflyframework-ecm-adapter-azure-form-recognizer` | 🔜 Planned | DocumentExtractionPort, DataExtractionPort |
+| **Google Document AI** | `fireflyframework-ecm-adapter-google-document-ai` | 🔜 Planned | DocumentExtractionPort, DataExtractionPort |
 
 ## How Adapters Work
 
@@ -214,7 +214,7 @@ When you add an adapter library to your application:
 3. **Bean Registration**: The adapter registers its implementation beans
 4. **Adapter Registry**: The adapter registers itself with the `AdapterRegistry`
 
-Example from an adapter library (e.g., `lib-ecm-adapter-s3`):
+Example from an adapter library (e.g., `fireflyframework-ecm-adapter-s3`):
 
 ```java
 // In the adapter library (separate repository)
@@ -239,7 +239,7 @@ public class S3DocumentAdapter implements DocumentPort, DocumentContentPort {
 
 ### Adapter Selection
 
-The `AdapterSelector` (provided by lib-ecm) chooses the appropriate adapter based on configuration:
+The `AdapterSelector` (provided by fireflyframework-ecm) chooses the appropriate adapter based on configuration:
 
 1. **Type Matching**: Matches `firefly.ecm.adapter-type` with adapter type
 2. **Feature Validation**: Ensures adapter supports required features
@@ -251,16 +251,16 @@ The `AdapterSelector` (provided by lib-ecm) chooses the appropriate adapter base
 ```
 Your Application
     │
-    ├─ depends on ──> lib-ecm (port interfaces)
+    ├─ depends on ──> fireflyframework-ecm (port interfaces)
     │
-    ├─ depends on ──> lib-ecm-adapter-s3
+    ├─ depends on ──> fireflyframework-ecm-adapter-s3
     │                     │
-    │                     └─ depends on ──> lib-ecm
+    │                     └─ depends on ──> fireflyframework-ecm
     │                     └─ depends on ──> AWS SDK
     │
-    └─ depends on ──> lib-ecm-adapter-docusign
+    └─ depends on ──> fireflyframework-ecm-adapter-docusign
                           │
-                          └─ depends on ──> lib-ecm
+                          └─ depends on ──> fireflyframework-ecm
                           └─ depends on ──> DocuSign SDK
 ```
 
@@ -282,7 +282,7 @@ Adapters declare their capabilities using `AdapterFeature` enum:
 
 ## Configuration System
 
-### Configuration in lib-ecm
+### Configuration in fireflyframework-ecm
 
 The core library provides the configuration infrastructure:
 
@@ -300,7 +300,7 @@ public class EcmProperties {
 
 Each adapter library defines its own configuration properties. For example:
 
-**S3 Adapter Configuration** (in `lib-ecm-adapter-s3`):
+**S3 Adapter Configuration** (in `fireflyframework-ecm-adapter-s3`):
 ```yaml
 firefly:
   ecm:
@@ -311,7 +311,7 @@ firefly:
         region: us-east-1
 ```
 
-**DocuSign Adapter Configuration** (in `lib-ecm-adapter-docusign`):
+**DocuSign Adapter Configuration** (in `fireflyframework-ecm-adapter-docusign`):
 ```yaml
 firefly:
   ecm:
@@ -325,7 +325,7 @@ firefly:
 
 ### Auto-Configuration
 
-The `EcmAutoConfiguration` class (in lib-ecm) automatically configures the ECM system:
+The `EcmAutoConfiguration` class (in fireflyframework-ecm) automatically configures the ECM system:
 
 1. **Property Binding**: Binds core configuration properties
 2. **Adapter Registry Setup**: Creates the adapter registry

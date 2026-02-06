@@ -39,9 +39,9 @@ This library implements **Hexagonal Architecture** (Ports and Adapters pattern),
 This is a **single-module library** containing:
 
 ```
-lib-ecm/                         # Port Interfaces Library
+fireflyframework-ecm/                         # Port Interfaces Library
 ├── src/main/java/
-│   └── com.firefly.core.ecm/
+│   └── org.fireflyframework.ecm/
 │       ├── port/                # Port Interfaces (business contracts)
 │       │   ├── document/        # Document management ports
 │       │   ├── folder/          # Folder management ports
@@ -62,20 +62,20 @@ Adapter implementations are provided in separate libraries that you add as depen
 
 ```
 Document Storage Adapters:
-├── lib-ecm-adapter-s3           # Amazon S3 adapter
-├── lib-ecm-adapter-azure-blob   # Azure Blob Storage adapter
-├── lib-ecm-adapter-minio        # MinIO adapter
-└── lib-ecm-adapter-alfresco     # Alfresco Content Services adapter
+├── fireflyframework-ecm-adapter-s3           # Amazon S3 adapter
+├── fireflyframework-ecm-adapter-azure-blob   # Azure Blob Storage adapter
+├── fireflyframework-ecm-adapter-minio        # MinIO adapter
+└── fireflyframework-ecm-adapter-alfresco     # Alfresco Content Services adapter
 
 eSignature Adapters:
-├── lib-ecm-adapter-docusign     # DocuSign adapter
-├── lib-ecm-adapter-adobe-sign   # Adobe Sign adapter
-└── lib-ecm-adapter-logalty      # Logalty adapter (eIDAS-compliant)
+├── fireflyframework-ecm-adapter-docusign     # DocuSign adapter
+├── fireflyframework-ecm-adapter-adobe-sign   # Adobe Sign adapter
+└── fireflyframework-ecm-adapter-logalty      # Logalty adapter (eIDAS-compliant)
 
 IDP Adapters:
-├── lib-ecm-adapter-aws-textract      # AWS Textract adapter
-├── lib-ecm-adapter-azure-form-recognizer  # Azure Form Recognizer adapter
-└── lib-ecm-adapter-google-document-ai     # Google Document AI adapter
+├── fireflyframework-ecm-adapter-aws-textract      # AWS Textract adapter
+├── fireflyframework-ecm-adapter-azure-form-recognizer  # Azure Form Recognizer adapter
+└── fireflyframework-ecm-adapter-google-document-ai     # Google Document AI adapter
 ```
 
 ## 🚀 What's Included in This Library
@@ -138,26 +138,26 @@ Adapter implementations are provided in **separate libraries**. Add the adapters
 
 | Adapter | Artifact ID | Status | Repository |
 |---------|-------------|--------|------------|
-| **Amazon S3** | `lib-ecm-adapter-s3` | ✅ Available | [firefly-oss/lib-ecm-adapter-s3](https://github.com/firefly-oss/lib-ecm-adapter-s3) |
-| **Azure Blob** | `lib-ecm-adapter-azure-blob` | ✅ Available | [firefly-oss/lib-ecm-adapter-azure-blob](https://github.com/firefly-oss/lib-ecm-adapter-azure-blob) |
-| **MinIO** | `lib-ecm-adapter-minio` | 🔜 Planned | - |
-| **Alfresco** | `lib-ecm-adapter-alfresco` | 🔜 Planned | - |
+| **Amazon S3** | `fireflyframework-ecm-adapter-s3` | ✅ Available | [firefly-oss/fireflyframework-ecm-adapter-s3](https://github.org/fireflyframework-oss/fireflyframework-ecm-adapter-s3) |
+| **Azure Blob** | `fireflyframework-ecm-adapter-azure-blob` | ✅ Available | [firefly-oss/fireflyframework-ecm-adapter-azure-blob](https://github.org/fireflyframework-oss/fireflyframework-ecm-adapter-azure-blob) |
+| **MinIO** | `fireflyframework-ecm-adapter-minio` | 🔜 Planned | - |
+| **Alfresco** | `fireflyframework-ecm-adapter-alfresco` | 🔜 Planned | - |
 
 ### eSignature Adapters
 
 | Adapter | Artifact ID | Status | Repository |
 |---------|-------------|--------|------------|
-| **DocuSign** | `lib-ecm-adapter-docusign` | ✅ Available | [firefly-oss/lib-ecm-adapter-docusign](https://github.com/firefly-oss/lib-ecm-adapter-docusign) |
-| **Adobe Sign** | `lib-ecm-adapter-adobe-sign` | ✅ Available | [firefly-oss/lib-ecm-adapter-adobe-sign](https://github.com/firefly-oss/lib-ecm-adapter-adobe-sign) |
-| **Logalty** | `lib-ecm-adapter-logalty` | 🔜 Planned | - |
+| **DocuSign** | `fireflyframework-ecm-adapter-docusign` | ✅ Available | [firefly-oss/fireflyframework-ecm-adapter-docusign](https://github.org/fireflyframework-oss/fireflyframework-ecm-adapter-docusign) |
+| **Adobe Sign** | `fireflyframework-ecm-adapter-adobe-sign` | ✅ Available | [firefly-oss/fireflyframework-ecm-adapter-adobe-sign](https://github.org/fireflyframework-oss/fireflyframework-ecm-adapter-adobe-sign) |
+| **Logalty** | `fireflyframework-ecm-adapter-logalty` | 🔜 Planned | - |
 
 ### IDP Adapters
 
 | Adapter | Artifact ID | Status | Repository |
 |---------|-------------|--------|------------|
-| **AWS Textract** | `lib-ecm-adapter-aws-textract` | 🔜 Planned | - |
-| **Azure Form Recognizer** | `lib-ecm-adapter-azure-form-recognizer` | 🔜 Planned | - |
-| **Google Document AI** | `lib-ecm-adapter-google-document-ai` | 🔜 Planned | - |
+| **AWS Textract** | `fireflyframework-ecm-adapter-aws-textract` | 🔜 Planned | - |
+| **Azure Form Recognizer** | `fireflyframework-ecm-adapter-azure-form-recognizer` | 🔜 Planned | - |
+| **Google Document AI** | `fireflyframework-ecm-adapter-google-document-ai` | 🔜 Planned | - |
 
 > **Legend:** ✅ = Available | 🔜 = Planned
 
@@ -170,8 +170,8 @@ Add the **core library** (port interfaces) and your chosen **adapter libraries**
 ```xml
 <!-- Core ECM Library (Port Interfaces) - REQUIRED -->
 <dependency>
-    <groupId>com.firefly</groupId>
-    <artifactId>lib-ecm</artifactId>
+    <groupId>org.fireflyframework</groupId>
+    <artifactId>fireflyframework-ecm</artifactId>
     <version>1.0.0-SNAPSHOT</version>
 </dependency>
 
@@ -179,22 +179,22 @@ Add the **core library** (port interfaces) and your chosen **adapter libraries**
 
 <!-- Amazon S3 Adapter (optional) -->
 <dependency>
-    <groupId>com.firefly</groupId>
-    <artifactId>lib-ecm-adapter-s3</artifactId>
+    <groupId>org.fireflyframework</groupId>
+    <artifactId>fireflyframework-ecm-adapter-s3</artifactId>
     <version>1.0.0-SNAPSHOT</version>
 </dependency>
 
 <!-- DocuSign Adapter (optional) -->
 <dependency>
-    <groupId>com.firefly</groupId>
-    <artifactId>lib-ecm-adapter-docusign</artifactId>
+    <groupId>org.fireflyframework</groupId>
+    <artifactId>fireflyframework-ecm-adapter-docusign</artifactId>
     <version>1.0.0-SNAPSHOT</version>
 </dependency>
 
 <!-- Azure Blob Storage Adapter (optional) -->
 <dependency>
-    <groupId>com.firefly</groupId>
-    <artifactId>lib-ecm-adapter-azure-blob</artifactId>
+    <groupId>org.fireflyframework</groupId>
+    <artifactId>fireflyframework-ecm-adapter-azure-blob</artifactId>
     <version>1.0.0-SNAPSHOT</version>
 </dependency>
 ```
@@ -381,9 +381,9 @@ Licensed under the Apache License, Version 2.0. See [LICENSE](LICENSE) for detai
 
 ## 🆘 Support
 
-- **Documentation**: [Firefly ECM Wiki](https://github.com/firefly-oss/lib-ecm/wiki)
-- **Issues**: [GitHub Issues](https://github.com/firefly-oss/lib-ecm/issues)
-- **Discussions**: [GitHub Discussions](https://github.com/firefly-oss/lib-ecm/discussions)
+- **Documentation**: [Firefly ECM Wiki](https://github.org/fireflyframework-oss/fireflyframework-ecm/wiki)
+- **Issues**: [GitHub Issues](https://github.org/fireflyframework-oss/fireflyframework-ecm/issues)
+- **Discussions**: [GitHub Discussions](https://github.org/fireflyframework-oss/fireflyframework-ecm/discussions)
 - **Enterprise Support**: Contact [support@getfirefly.io](mailto:support@firefly-oss.org)
 
 ---

@@ -388,7 +388,7 @@ public class BatchDocumentProcessor {
 ```yaml
 logging:
   level:
-    com.firefly.core.ecm.adapter.google: DEBUG
+    org.fireflyframework.ecm.adapter.google: DEBUG
     com.google.cloud.documentai: DEBUG
 ```
 

@@ -1,1 +1,1 @@
-com.firefly.core.ecm.config.EcmAutoConfiguration
+org.fireflyframework.ecm.config.EcmAutoConfiguration
