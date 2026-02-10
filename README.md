@@ -1,5 +1,7 @@
 # Firefly ECM Library
 
+[![CI](https://github.com/fireflyframework/fireflyframework-ecm/actions/workflows/ci.yml/badge.svg)](https://github.com/fireflyframework/fireflyframework-ecm/actions/workflows/ci.yml)
+
 > **Enterprise Content Management Port Interfaces for the Modern Era**
 
 A comprehensive, production-ready Enterprise Content Management (ECM) **port interface library** built on hexagonal architecture principles. This library provides the **core port interfaces** (business contracts) for document management, digital signatures, and intelligent document processing. Adapter implementations are provided in separate libraries, allowing you to choose and integrate only the providers you need.
