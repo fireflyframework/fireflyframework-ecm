@@ -24,7 +24,7 @@ import org.fireflyframework.ecm.port.folder.*;
 import org.fireflyframework.ecm.port.idp.*;
 import org.fireflyframework.ecm.port.security.*;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.stereotype.Component;
+
 
 /**
  * Factory for creating no-op adapter implementations for all ECM port interfaces.
@@ -48,7 +48,6 @@ import org.springframework.stereotype.Component;
  * @see NoOpAdapterBase
  */
 @Slf4j
-@Component
 public class NoOpAdapterFactory {
 
     /**
