@@ -17,7 +17,7 @@ package org.fireflyframework.ecm.adapter;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
+
 
 import java.util.Optional;
 
@@ -51,7 +51,6 @@ import java.util.Optional;
  * @see EcmPortProvider
  */
 @Slf4j
-@Component
 public class AdapterSelector {
 
     /** The adapter registry containing all available adapters. */

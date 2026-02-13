@@ -25,7 +25,7 @@ import org.fireflyframework.ecm.port.audit.*;
 import org.fireflyframework.ecm.port.esignature.*;
 import org.fireflyframework.ecm.port.idp.*;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.stereotype.Service;
+
 
 import java.util.Optional;
 
@@ -76,7 +76,6 @@ import java.util.Optional;
  * @see EcmAutoConfiguration
  */
 @Slf4j
-@Service
 public class EcmPortProvider {
 
     /** The adapter selector responsible for choosing appropriate adapters. */

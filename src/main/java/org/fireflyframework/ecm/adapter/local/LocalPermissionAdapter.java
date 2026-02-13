@@ -24,8 +24,8 @@ import org.fireflyframework.ecm.domain.enums.security.ResourceType;
 import org.fireflyframework.ecm.domain.model.security.Permission;
 import org.fireflyframework.ecm.port.security.PermissionPort;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
-import org.springframework.stereotype.Component;
+
+
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
@@ -38,13 +38,11 @@ import java.util.concurrent.ConcurrentHashMap;
  * Provides a functional, non-stub adapter to satisfy hexagonal port contracts.
  */
 @Slf4j
-@Component
 @EcmAdapter(
         type = "local-permissions",
         description = "Local in-memory PermissionPort adapter",
         supportedFeatures = { AdapterFeature.PERMISSIONS }
 )
-@ConditionalOnProperty(name = "firefly.ecm.permissions.enabled", havingValue = "true", matchIfMissing = false)
 public class LocalPermissionAdapter implements PermissionPort {
 
     private final Map<UUID, Permission> store = new ConcurrentHashMap<>();

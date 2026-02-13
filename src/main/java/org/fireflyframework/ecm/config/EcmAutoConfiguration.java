@@ -17,6 +17,8 @@ package org.fireflyframework.ecm.config;
 
 import org.fireflyframework.ecm.adapter.AdapterRegistry;
 import org.fireflyframework.ecm.adapter.AdapterSelector;
+import org.fireflyframework.ecm.adapter.local.LocalDocumentSearchAdapter;
+import org.fireflyframework.ecm.adapter.local.LocalPermissionAdapter;
 import org.fireflyframework.ecm.adapter.noop.NoOpAdapterFactory;
 import org.fireflyframework.ecm.port.document.*;
 import org.fireflyframework.ecm.port.folder.*;
@@ -27,10 +29,11 @@ import org.fireflyframework.ecm.port.idp.*;
 import org.fireflyframework.ecm.service.EcmPortProvider;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.autoconfigure.AutoConfiguration;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
+import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.ComponentScan;
 
 /**
  * Spring Boot auto-configuration for the Firefly ECM (Enterprise Content Management) system.
@@ -41,7 +44,7 @@ import org.springframework.context.annotation.ComponentScan;
  *   <li>Adapter discovery and registration</li>
  *   <li>Port provider configuration</li>
  *   <li>Conditional bean creation based on feature flags</li>
- *   <li>Component scanning for ECM-related beans</li>
+ *   <li>Explicit bean registration for ECM infrastructure components</li>
  * </ul>
  *
  * <p>The auto-configuration is activated when the property {@code firefly.ecm.enabled}
@@ -72,9 +75,56 @@ import org.springframework.context.annotation.ComponentScan;
 @Slf4j
 @AutoConfiguration
 @EnableConfigurationProperties(EcmProperties.class)
-@ComponentScan(basePackages = "org.fireflyframework.ecm")
 @ConditionalOnProperty(prefix = "firefly.ecm", name = "enabled", havingValue = "true", matchIfMissing = true)
 public class EcmAutoConfiguration {
+
+    /**
+     * Configures the adapter registry for discovering and managing ECM adapters.
+     *
+     * <p>The adapter registry automatically discovers all ECM adapters in the Spring
+     * application context and provides efficient access to them based on type or
+     * interface requirements.</p>
+     *
+     * @param applicationContext the Spring application context for bean discovery
+     * @return a configured AdapterRegistry instance
+     * @see AdapterRegistry
+     */
+    @Bean
+    @ConditionalOnMissingBean
+    public AdapterRegistry adapterRegistry(ApplicationContext applicationContext) {
+        return new AdapterRegistry(applicationContext);
+    }
+
+    /**
+     * Configures the adapter selector for choosing appropriate ECM adapters.
+     *
+     * <p>The adapter selector implements the adapter selection logic, providing
+     * intelligent fallback mechanisms and validation capabilities.</p>
+     *
+     * @param adapterRegistry the registry containing available adapters
+     * @return a configured AdapterSelector instance
+     * @see AdapterSelector
+     */
+    @Bean
+    @ConditionalOnMissingBean
+    public AdapterSelector adapterSelector(AdapterRegistry adapterRegistry) {
+        return new AdapterSelector(adapterRegistry);
+    }
+
+    /**
+     * Configures the no-op adapter factory for creating fallback adapter implementations.
+     *
+     * <p>The no-op adapter factory provides a centralized way to create no-op adapters
+     * that serve as fallbacks when no real adapter implementations are available.</p>
+     *
+     * @return a configured NoOpAdapterFactory instance
+     * @see NoOpAdapterFactory
+     */
+    @Bean
+    @ConditionalOnMissingBean
+    public NoOpAdapterFactory noOpAdapterFactory() {
+        return new NoOpAdapterFactory();
+    }
 
     /**
      * Configures the central ECM port provider that manages adapter selection and port provisioning.
@@ -90,9 +140,44 @@ public class EcmAutoConfiguration {
      * @see AdapterSelector
      */
     @Bean
+    @ConditionalOnMissingBean
     public EcmPortProvider ecmPortProvider(AdapterSelector adapterSelector, EcmProperties ecmProperties) {
         log.info("Configuring ECM Port Provider with adapter type: {}", ecmProperties.getAdapterType());
         return new EcmPortProvider(adapterSelector, ecmProperties);
+    }
+
+    /**
+     * Configures the local in-memory document search adapter.
+     *
+     * <p>This bean is only created when the {@code firefly.ecm.search.enabled} property
+     * is set to {@code true}. It provides an in-memory search implementation for
+     * development and testing purposes.</p>
+     *
+     * @return a configured LocalDocumentSearchAdapter instance
+     * @see LocalDocumentSearchAdapter
+     */
+    @Bean
+    @ConditionalOnMissingBean
+    @ConditionalOnProperty(name = "firefly.ecm.search.enabled", havingValue = "true", matchIfMissing = false)
+    public LocalDocumentSearchAdapter localDocumentSearchAdapter() {
+        return new LocalDocumentSearchAdapter();
+    }
+
+    /**
+     * Configures the local in-memory permission adapter.
+     *
+     * <p>This bean is only created when the {@code firefly.ecm.permissions.enabled} property
+     * is set to {@code true}. It provides an in-memory permission management implementation
+     * for development and testing purposes.</p>
+     *
+     * @return a configured LocalPermissionAdapter instance
+     * @see LocalPermissionAdapter
+     */
+    @Bean
+    @ConditionalOnMissingBean
+    @ConditionalOnProperty(name = "firefly.ecm.permissions.enabled", havingValue = "true", matchIfMissing = false)
+    public LocalPermissionAdapter localPermissionAdapter() {
+        return new LocalPermissionAdapter();
     }
 
     /**

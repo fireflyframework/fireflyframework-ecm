@@ -22,8 +22,8 @@ import org.fireflyframework.ecm.domain.dto.search.DocumentSearchCriteria;
 import org.fireflyframework.ecm.domain.model.document.Document;
 import org.fireflyframework.ecm.port.document.DocumentSearchPort;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
-import org.springframework.stereotype.Component;
+
+
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
@@ -38,13 +38,11 @@ import java.util.stream.Stream;
  * Stores indexed documents in-memory and supports basic filters.
  */
 @Slf4j
-@Component
 @EcmAdapter(
         type = "local-search",
         description = "Local in-memory DocumentSearchPort adapter",
         supportedFeatures = { AdapterFeature.SEARCH, AdapterFeature.METADATA_SEARCH }
 )
-@ConditionalOnProperty(name = "firefly.ecm.search.enabled", havingValue = "true", matchIfMissing = false)
 public class LocalDocumentSearchAdapter implements DocumentSearchPort {
 
     private final Map<UUID, Document> index = new ConcurrentHashMap<>();
