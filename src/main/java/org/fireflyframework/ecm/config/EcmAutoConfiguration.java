@@ -338,7 +338,13 @@ public class EcmAutoConfiguration {
     @ConditionalOnProperty(prefix = "firefly.ecm.features", name = "permissions", havingValue = "true", matchIfMissing = true)
     public PermissionPort permissionPort(EcmPortProvider portProvider, NoOpAdapterFactory noOpAdapterFactory) {
         return portProvider.getPermissionPort()
-            .orElseGet(noOpAdapterFactory::createPermissionPort);
+            .orElseGet(() -> {
+                log.warn("=========================================================================");
+                log.warn("ECM PermissionPort is using NoOp adapter — ALL permission checks will");
+                log.warn("DENY by default. Configure a real adapter for production use.");
+                log.warn("=========================================================================");
+                return noOpAdapterFactory.createPermissionPort();
+            });
     }
 
     /**
@@ -361,7 +367,13 @@ public class EcmAutoConfiguration {
     @ConditionalOnProperty(prefix = "firefly.ecm.features", name = "security", havingValue = "true", matchIfMissing = true)
     public DocumentSecurityPort documentSecurityPort(EcmPortProvider portProvider, NoOpAdapterFactory noOpAdapterFactory) {
         return portProvider.getDocumentSecurityPort()
-            .orElseGet(noOpAdapterFactory::createDocumentSecurityPort);
+            .orElseGet(() -> {
+                log.warn("=========================================================================");
+                log.warn("ECM DocumentSecurityPort is using NoOp adapter — ALL security operations");
+                log.warn("will be denied/no-op. Configure a real adapter for production use.");
+                log.warn("=========================================================================");
+                return noOpAdapterFactory.createDocumentSecurityPort();
+            });
     }
 
     /**

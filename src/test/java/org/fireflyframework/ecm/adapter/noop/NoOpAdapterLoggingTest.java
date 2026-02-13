@@ -145,9 +145,9 @@ class NoOpAdapterLoggingTest {
         UUID testDocumentId = UUID.randomUUID();
         UUID testUserId = UUID.randomUUID();
 
-        // Call a permission check method (should return true with warning)
+        // Call a permission check method (should return false with warning — deny by default)
         StepVerifier.create(adapter.canAccessDocument(testDocumentId, testUserId, "READ"))
-                .expectNext(true)
+                .expectNext(false)
                 .verifyComplete();
 
         // Call an encryption method and expect error

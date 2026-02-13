@@ -120,24 +120,24 @@ class EcmGracefulDegradationTest {
     }
 
     /**
-     * Verifies that no-op adapters return permissive defaults for security operations.
+     * Verifies that no-op adapters return deny by default for security operations.
      */
     @Test
-    void shouldReturnPermissiveDefaultsForSecurityOperations() {
+    void shouldReturnDenyByDefaultForSecurityOperations() {
         UUID testDocumentId = UUID.randomUUID();
         UUID testUserId = UUID.randomUUID();
 
-        // Access checks should return true (permissive default)
+        // Access checks should return false (deny by default)
         StepVerifier.create(documentSecurityPort.canAccessDocument(testDocumentId, testUserId, "READ"))
-                .expectNext(true)
+                .expectNext(false)
                 .verifyComplete();
 
         StepVerifier.create(documentSecurityPort.canDeleteDocument(testDocumentId, testUserId))
-                .expectNext(true)
+                .expectNext(false)
                 .verifyComplete();
 
         StepVerifier.create(documentSecurityPort.canModifyDocument(testDocumentId, testUserId))
-                .expectNext(true)
+                .expectNext(false)
                 .verifyComplete();
     }
 
