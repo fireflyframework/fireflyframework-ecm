@@ -36,10 +36,13 @@ import java.lang.reflect.Proxy;
  * <ul>
  *   <li>Methods returning {@link Mono}: Return empty Mono or error for modifications</li>
  *   <li>Methods returning {@link Flux}: Return empty Flux</li>
- *   <li>Methods returning {@link Boolean}: Return false for existence checks, true for permissions</li>
+ *   <li>Methods returning {@link Boolean}: Return false (deny by default) for ALL checks including permissions</li>
  *   <li>Methods returning {@link String}: Return adapter name for getAdapterName(), empty for others</li>
  *   <li>Other return types: Return null or appropriate defaults</li>
  * </ul>
+ *
+ * <p><strong>Security Note:</strong> All permission/access checks return DENY by default.
+ * Configure a real adapter for production use.</p>
  *
  * @param <T> the port interface type
  * @author Firefly Software Solutions Inc.
@@ -121,12 +124,14 @@ public class NoOpGenericAdapter<T> extends NoOpAdapterBase implements Invocation
     private Mono<?> handleMonoReturn(String methodName) {
         String lowerMethodName = methodName.toLowerCase();
 
-        // For boolean permission/access methods, return true (permissive default) - CHECK FIRST
+        // SECURITY: Permission/access methods DENY by default when no adapter configured
         if (lowerMethodName.startsWith("can") ||
             lowerMethodName.contains("access") ||
             lowerMethodName.contains("permission") ||
             lowerMethodName.contains("allow")) {
-            return Mono.just(true);
+            log.warn("SECURITY: Permission check '{}' denied by NoOp {} adapter. " +
+                    "Configure a real adapter for production use.", methodName, getAdapterType());
+            return Mono.just(false);
         }
 
         // For boolean existence/status checks, return false
@@ -170,23 +175,17 @@ public class NoOpGenericAdapter<T> extends NoOpAdapterBase implements Invocation
     private boolean handleBooleanReturn(String methodName) {
         String lowerMethodName = methodName.toLowerCase();
 
-        // For permission/access methods, return true (permissive default)
+        // SECURITY: Permission/access methods DENY by default
         if (lowerMethodName.startsWith("can") ||
             lowerMethodName.contains("access") ||
             lowerMethodName.contains("permission") ||
             lowerMethodName.contains("allow")) {
-            return true;
-        }
-
-        // For existence/status checks, return false
-        if (lowerMethodName.startsWith("exists") ||
-            lowerMethodName.startsWith("has") ||
-            lowerMethodName.startsWith("is") ||
-            lowerMethodName.startsWith("contains")) {
+            log.warn("SECURITY: Permission check '{}' denied by NoOp {} adapter. " +
+                    "Configure a real adapter for production use.", methodName, getAdapterType());
             return false;
         }
 
-        // Default to false for other boolean methods
+        // For all other boolean methods, return false
         return false;
     }
 }
