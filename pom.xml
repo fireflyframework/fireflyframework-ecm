@@ -7,12 +7,12 @@
     <parent>
         <groupId>org.fireflyframework</groupId>
         <artifactId>fireflyframework-parent</artifactId>
-        <version>26.02.04</version>
+        <version>26.02.05</version>
         <relativePath/>
     </parent>
 
     <artifactId>fireflyframework-ecm</artifactId>
-    <version>26.02.04</version>
+    <version>26.02.05</version>
     <packaging>jar</packaging>
 
     <name>Firefly Framework - Enterprise Content Management Library</name>
@@ -202,6 +202,13 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-actuator</artifactId>
+        </dependency>
+
+        <!-- Firefly Kernel (foundational types and exceptions) -->
+        <dependency>
+            <groupId>org.fireflyframework</groupId>
+            <artifactId>fireflyframework-kernel</artifactId>
+            <version>${project.version}</version>
         </dependency>
 
         <!-- Observability (metrics, tracing, health, logging) -->

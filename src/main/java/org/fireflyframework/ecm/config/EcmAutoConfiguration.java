@@ -196,6 +196,7 @@ public class EcmAutoConfiguration {
      * @return a DocumentPort implementation (real adapter or no-op fallback)
      * @see DocumentPort
      */
+    @ConditionalOnMissingBean
     @Bean
     @ConditionalOnProperty(prefix = "firefly.ecm.features", name = "document-management", havingValue = "true", matchIfMissing = true)
     public DocumentPort documentPort(EcmPortProvider portProvider, NoOpAdapterFactory noOpAdapterFactory) {
@@ -219,6 +220,7 @@ public class EcmAutoConfiguration {
      * @return a DocumentContentPort implementation (real adapter or no-op fallback)
      * @see DocumentContentPort
      */
+    @ConditionalOnMissingBean
     @Bean
     @ConditionalOnProperty(prefix = "firefly.ecm.features", name = "content-storage", havingValue = "true", matchIfMissing = true)
     public DocumentContentPort documentContentPort(EcmPortProvider portProvider, NoOpAdapterFactory noOpAdapterFactory) {
@@ -242,6 +244,7 @@ public class EcmAutoConfiguration {
      * @return a DocumentVersionPort implementation (real adapter or no-op fallback)
      * @see DocumentVersionPort
      */
+    @ConditionalOnMissingBean
     @Bean
     @ConditionalOnProperty(prefix = "firefly.ecm.features", name = "versioning", havingValue = "true", matchIfMissing = true)
     public DocumentVersionPort documentVersionPort(EcmPortProvider portProvider, NoOpAdapterFactory noOpAdapterFactory) {
@@ -265,6 +268,7 @@ public class EcmAutoConfiguration {
      * @return a DocumentSearchPort implementation (real adapter or no-op fallback)
      * @see DocumentSearchPort
      */
+    @ConditionalOnMissingBean
     @Bean
     @ConditionalOnProperty(prefix = "firefly.ecm.features", name = "search", havingValue = "true", matchIfMissing = true)
     public DocumentSearchPort documentSearchPort(EcmPortProvider portProvider, NoOpAdapterFactory noOpAdapterFactory) {
@@ -288,6 +292,7 @@ public class EcmAutoConfiguration {
      * @return a FolderPort implementation (real adapter or no-op fallback)
      * @see FolderPort
      */
+    @ConditionalOnMissingBean
     @Bean
     @ConditionalOnProperty(prefix = "firefly.ecm.features", name = "folder-management", havingValue = "true", matchIfMissing = true)
     public FolderPort folderPort(EcmPortProvider portProvider, NoOpAdapterFactory noOpAdapterFactory) {
@@ -311,6 +316,7 @@ public class EcmAutoConfiguration {
      * @return a FolderHierarchyPort implementation (real adapter or no-op fallback)
      * @see FolderHierarchyPort
      */
+    @ConditionalOnMissingBean
     @Bean
     @ConditionalOnProperty(prefix = "firefly.ecm.features", name = "folder-hierarchy", havingValue = "true", matchIfMissing = true)
     public FolderHierarchyPort folderHierarchyPort(EcmPortProvider portProvider, NoOpAdapterFactory noOpAdapterFactory) {
@@ -334,6 +340,7 @@ public class EcmAutoConfiguration {
      * @return a PermissionPort implementation (real adapter or no-op fallback)
      * @see PermissionPort
      */
+    @ConditionalOnMissingBean
     @Bean
     @ConditionalOnProperty(prefix = "firefly.ecm.features", name = "permissions", havingValue = "true", matchIfMissing = true)
     public PermissionPort permissionPort(EcmPortProvider portProvider, NoOpAdapterFactory noOpAdapterFactory) {
@@ -363,6 +370,7 @@ public class EcmAutoConfiguration {
      * @return a DocumentSecurityPort implementation (real adapter or no-op fallback)
      * @see DocumentSecurityPort
      */
+    @ConditionalOnMissingBean
     @Bean
     @ConditionalOnProperty(prefix = "firefly.ecm.features", name = "security", havingValue = "true", matchIfMissing = true)
     public DocumentSecurityPort documentSecurityPort(EcmPortProvider portProvider, NoOpAdapterFactory noOpAdapterFactory) {
@@ -392,6 +400,7 @@ public class EcmAutoConfiguration {
      * @return an AuditPort implementation (real adapter or no-op fallback)
      * @see AuditPort
      */
+    @ConditionalOnMissingBean
     @Bean
     @ConditionalOnProperty(prefix = "firefly.ecm.features", name = "auditing", havingValue = "true", matchIfMissing = true)
     public AuditPort auditPort(EcmPortProvider portProvider, NoOpAdapterFactory noOpAdapterFactory) {
@@ -415,6 +424,7 @@ public class EcmAutoConfiguration {
      * @return a SignatureEnvelopePort implementation (real adapter or no-op fallback)
      * @see SignatureEnvelopePort
      */
+    @ConditionalOnMissingBean
     @Bean
     @ConditionalOnProperty(prefix = "firefly.ecm.features", name = "esignature", havingValue = "true", matchIfMissing = false)
     public SignatureEnvelopePort signatureEnvelopePort(EcmPortProvider portProvider, NoOpAdapterFactory noOpAdapterFactory) {
@@ -438,6 +448,7 @@ public class EcmAutoConfiguration {
      * @return a SignatureRequestPort implementation (real adapter or no-op fallback)
      * @see SignatureRequestPort
      */
+    @ConditionalOnMissingBean
     @Bean
     @ConditionalOnProperty(prefix = "firefly.ecm.features", name = "esignature", havingValue = "true", matchIfMissing = false)
     public SignatureRequestPort signatureRequestPort(EcmPortProvider portProvider, NoOpAdapterFactory noOpAdapterFactory) {
@@ -461,6 +472,7 @@ public class EcmAutoConfiguration {
      * @return a SignatureValidationPort implementation (real adapter or no-op fallback)
      * @see SignatureValidationPort
      */
+    @ConditionalOnMissingBean
     @Bean
     @ConditionalOnProperty(prefix = "firefly.ecm.features", name = "esignature", havingValue = "true", matchIfMissing = false)
     public SignatureValidationPort signatureValidationPort(EcmPortProvider portProvider, NoOpAdapterFactory noOpAdapterFactory) {
@@ -484,6 +496,7 @@ public class EcmAutoConfiguration {
      * @return a SignatureProofPort implementation (real adapter or no-op fallback)
      * @see SignatureProofPort
      */
+    @ConditionalOnMissingBean
     @Bean
     @ConditionalOnProperty(prefix = "firefly.ecm.features", name = "esignature", havingValue = "true", matchIfMissing = false)
     public SignatureProofPort signatureProofPort(EcmPortProvider portProvider, NoOpAdapterFactory noOpAdapterFactory) {
@@ -508,6 +521,7 @@ public class EcmAutoConfiguration {
      * @return a DocumentExtractionPort implementation (real adapter or no-op fallback)
      * @see DocumentExtractionPort
      */
+    @ConditionalOnMissingBean
     @Bean
     @ConditionalOnProperty(prefix = "firefly.ecm.features", name = "idp", havingValue = "true", matchIfMissing = false)
     public DocumentExtractionPort documentExtractionPort(EcmPortProvider portProvider, NoOpAdapterFactory noOpAdapterFactory) {
@@ -532,6 +546,7 @@ public class EcmAutoConfiguration {
      * @return a DocumentClassificationPort implementation (real adapter or no-op fallback)
      * @see DocumentClassificationPort
      */
+    @ConditionalOnMissingBean
     @Bean
     @ConditionalOnProperty(prefix = "firefly.ecm.features", name = "idp", havingValue = "true", matchIfMissing = false)
     public DocumentClassificationPort documentClassificationPort(EcmPortProvider portProvider, NoOpAdapterFactory noOpAdapterFactory) {
@@ -556,6 +571,7 @@ public class EcmAutoConfiguration {
      * @return a DocumentValidationPort implementation (real adapter or no-op fallback)
      * @see DocumentValidationPort
      */
+    @ConditionalOnMissingBean
     @Bean
     @ConditionalOnProperty(prefix = "firefly.ecm.features", name = "idp", havingValue = "true", matchIfMissing = false)
     public DocumentValidationPort documentValidationPort(EcmPortProvider portProvider, NoOpAdapterFactory noOpAdapterFactory) {
@@ -579,6 +595,7 @@ public class EcmAutoConfiguration {
      * @return a DataExtractionPort implementation (real adapter or no-op fallback)
      * @see DataExtractionPort
      */
+    @ConditionalOnMissingBean
     @Bean
     @ConditionalOnProperty(prefix = "firefly.ecm.features", name = "idp", havingValue = "true", matchIfMissing = false)
     public DataExtractionPort dataExtractionPort(EcmPortProvider portProvider, NoOpAdapterFactory noOpAdapterFactory) {
