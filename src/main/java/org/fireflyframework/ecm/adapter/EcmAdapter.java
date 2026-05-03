@@ -1,5 +1,5 @@
 /*
- * Copyright 2024 Firefly Software Solutions Inc.
+ * Copyright 2024 Firefly Software Foundation.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -73,9 +73,9 @@ public @interface EcmAdapter {
     /**
      * The vendor/provider of the adapter.
      *
-     * @return the adapter vendor (default: "Firefly Software Solutions Inc.")
+     * @return the adapter vendor (default: "Firefly Software Foundation.")
      */
-    String vendor() default "Firefly Software Solutions Inc.";
+    String vendor() default "Firefly Software Foundation.";
     
     /**
      * Required configuration properties for this adapter.
