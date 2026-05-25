@@ -1,5 +1,5 @@
 /*
- * Copyright 2024-2026 Firefly Software Solutions Inc
+ * Copyright 2024-2026 Firefly Software Foundation
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -43,7 +43,7 @@ import static org.assertj.core.api.Assertions.assertThat;
  * It ensures that the application doesn't fail during startup and that appropriate
  * warnings are logged when ECM functionality is attempted but not available.</p>
  *
- * @author Firefly Software Solutions Inc.
+ * @author Firefly Software Foundation.
  * @version 1.0
  * @since 1.0
  */

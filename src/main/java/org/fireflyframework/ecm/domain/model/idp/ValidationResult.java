@@ -1,5 +1,5 @@
 /*
- * Copyright 2024 Firefly Software Solutions Inc.
+ * Copyright 2024 Firefly Software Foundation.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -44,7 +44,7 @@ import java.util.UUID;
  * <p>Validation results help determine whether extracted data is suitable
  * for downstream processing and business use.</p>
  * 
- * @author Firefly Software Solutions Inc.
+ * @author Firefly Software Foundation.
  * @since 1.0.0
  */
 @Data

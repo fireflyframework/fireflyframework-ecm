@@ -218,4 +218,4 @@ For detailed API documentation, see:
 For additional support:
 - Check the [Adobe Sign API Documentation](https://secure.na1.adobesign.com/public/docs/restapi/v6)
 - Review the [Firefly ECM Architecture Guide](../architecture.md)
-- Contact Firefly Software Solutions support
+- Contact Firefly Software Foundation support

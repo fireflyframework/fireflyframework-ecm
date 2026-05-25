@@ -1,5 +1,5 @@
 /*
- * Copyright 2024 Firefly Software Solutions Inc.
+ * Copyright 2024 Firefly Software Foundation.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -31,7 +31,7 @@ package org.fireflyframework.ecm.domain.enums.idp;
  *   <li><strong>Layout Analysis:</strong> Document structure, regions, formatting</li>
  * </ul>
  * 
- * @author Firefly Software Solutions Inc.
+ * @author Firefly Software Foundation.
  * @since 1.0.0
  */
 public enum ExtractionType {

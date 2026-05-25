@@ -1,5 +1,5 @@
 /*
- * Copyright 2024 Firefly Software Solutions Inc.
+ * Copyright 2024 Firefly Software Foundation.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -34,7 +34,7 @@ package org.fireflyframework.ecm.domain.enums.idp;
  * processing time and resources. The appropriate level depends on the use case,
  * compliance requirements, and acceptable risk tolerance.</p>
  * 
- * @author Firefly Software Solutions Inc.
+ * @author Firefly Software Foundation.
  * @since 1.0.0
  */
 public enum ValidationLevel {
